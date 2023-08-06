@@ -1,11 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
 
-enum Option {
-  hep,
-  bazen,
-  hic,
-}
+enum Option { always, generally, rarely, never }
 
 class MyDropdownButton extends StatefulWidget {
   const MyDropdownButton({super.key});
@@ -15,7 +11,7 @@ class MyDropdownButton extends StatefulWidget {
 }
 
 class _MyDropdownButtonState extends State<MyDropdownButton> {
-  Option selectedOption = Option.hic; // Başlangıçta seçili değer olarak "hiç" seçiyoruz
+  Option selectedOption = Option.never; //Başlangıçta seçili değer olarak "hiç" seçilir.
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +34,13 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
 
   String optionToString(Option option) {
     switch (option) {
-      case Option.hep:
-        return 'Hep';
-      case Option.bazen:
-        return 'Bazen';
-      case Option.hic:
+      case Option.always:
+        return 'Her zaman';
+      case Option.generally:
+        return 'Genellikle';
+      case Option.rarely:
+        return 'Nadir';
+      case Option.never:
         return 'Hiç';
       default:
         return '';

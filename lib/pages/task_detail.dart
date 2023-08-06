@@ -31,7 +31,6 @@ class TaskDetailState extends State<TaskDetail> {
   Widget build(BuildContext context) {
     bool test = true;
     return Scaffold(
-      //appBar: AppBar(),
       body: SafeArea(
         child: YoutubePlayerScaffold(
           enableFullScreenOnVerticalDrag: false, //aktif olunca ayarlar çalışmıyor!
@@ -45,7 +44,7 @@ class TaskDetailState extends State<TaskDetail> {
               return Column(
                 children: [
                   test ? player : const SizedBox(),
-                  VideoBody(title: widget.title), //kendi içinde expanded var!
+                  const VideoBody(), //kendi içinde expanded var!
                 ],
               );
             } else {

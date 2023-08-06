@@ -12,11 +12,12 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = locator<ProjectColor>();
+    final style = locator<ProjectStyle>();
 
     return Container(
-      decoration: ProjectStyle().taskContainer,
+      decoration: style.taskContainer,
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5) + const EdgeInsets.only(right: 8),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 2, vertical: 5) + const EdgeInsets.only(right: 10),
         trailing: const MyDropdownButton(),
         leading: IconButton(
           onPressed: () {

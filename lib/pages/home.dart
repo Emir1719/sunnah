@@ -12,6 +12,9 @@ class Home extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: const [
+            LinearProgressIndicator(value: 0.5, minHeight: 10),
+            //Text("%50"),
+            SizedBox(height: 20),
             TaskItem(),
           ],
         ),
