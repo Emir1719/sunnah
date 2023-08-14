@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sunnah/constants/color.dart';
+import 'package:sunnah/locator.dart';
 import 'package:sunnah/widgets/video_body.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
@@ -12,6 +14,7 @@ class TaskDetail extends StatefulWidget {
 }
 
 class TaskDetailState extends State<TaskDetail> {
+  final color = locator<ProjectColor>();
   YoutubePlayerController controller = YoutubePlayerController.fromVideoId(
     videoId: 'P79my65IpEk', //9my65IpEk
     autoPlay: false,
@@ -35,7 +38,7 @@ class TaskDetailState extends State<TaskDetail> {
         child: YoutubePlayerScaffold(
           enableFullScreenOnVerticalDrag: false, //aktif olunca ayarlar çalışmıyor!
           controller: controller,
-          backgroundColor: Colors.white,
+          backgroundColor: color.white,
           aspectRatio: 16 / 9,
           builder: (context, player) {
             Orientation orientation = MediaQuery.of(context).orientation;

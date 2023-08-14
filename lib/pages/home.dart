@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunnah/widgets/percent.dart';
 import 'package:sunnah/widgets/task_item.dart';
 
 class Home extends StatelessWidget {
@@ -7,15 +8,21 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Sünnet Pusulası"), centerTitle: true),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      appBar: AppBar(title: const Text("Sünnet Rehberi"), centerTitle: true),
+      body: SafeArea(
         child: Column(
-          children: const [
-            LinearProgressIndicator(value: 0.5, minHeight: 10),
-            //Text("%50"),
-            SizedBox(height: 20),
-            TaskItem(),
+          children: [
+            const Percent(),
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.all(20),
+                itemCount: 15,
+                separatorBuilder: (context, index) => const SizedBox(height: 15),
+                itemBuilder: (context, index) {
+                  return const TaskItem();
+                },
+              ),
+            ),
           ],
         ),
       ),

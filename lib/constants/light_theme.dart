@@ -17,6 +17,7 @@ class ThemeLight {
   AppBarTheme _appBarTheme() {
     return AppBarTheme(
       centerTitle: true,
+      elevation: 2,
       color: _color.mettalicGreen,
       titleTextStyle: const TextStyle(fontSize: 20),
       systemOverlayStyle: SystemUiOverlayStyle(

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sunnah/constants/light_theme.dart';
 import 'package:sunnah/locator.dart';
 import 'package:sunnah/pages/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
+  /*SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]); //Yatay döndürmeyi kapatır
+  ]); //Yatay döndürmeyi kapatır*/
   setupLocator();
   runApp(const MainApp());
 }
