@@ -13,7 +13,7 @@ class Percent extends StatelessWidget {
     var style = locator<ProjectStyle>();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Row(
         children: [
           Expanded(

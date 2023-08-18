@@ -13,16 +13,14 @@ class VideoBody extends StatefulWidget {
 class _VideoBodyState extends State<VideoBody> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          //Video başlığı
-          VideoTitleArea(),
-          //Video açıklaması
-          VideoDescriptionArea(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        //Video başlığı
+        VideoTitleArea(),
+        //Video açıklaması
+        VideoDescriptionArea(),
+      ],
     );
   }
 }

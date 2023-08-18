@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/constants/light_theme.dart';
 import 'package:sunnah/locator.dart';
 import 'package:sunnah/pages/home.dart';
@@ -10,7 +11,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]); //Yatay döndürmeyi kapatır*/
   setupLocator();
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
