@@ -1,38 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/constants/color.dart';
 import 'package:sunnah/locator.dart';
-import 'package:sunnah/widgets/video_body.dart';
+import 'package:sunnah/models/task_model.dart';
+import 'package:sunnah/widgets/video_bottom.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 ///Video player'ın bulunduğu alan.
-class TaskDetail extends StatefulWidget {
-  const TaskDetail({super.key, required this.title});
-  final String title;
+class TaskDetail extends ConsumerStatefulWidget {
+  const TaskDetail({super.key, required this.task});
+  final TaskModel task;
 
   @override
-  State<TaskDetail> createState() => TaskDetailState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _TaskDetailState();
 }
 
-class TaskDetailState extends State<TaskDetail> {
+class _TaskDetailState extends ConsumerState<TaskDetail> {
   final color = locator<ProjectColor>();
-  YoutubePlayerController controller = YoutubePlayerController.fromVideoId(
-    videoId: 'P79my65IpEk', //9my65IpEk
-    autoPlay: false,
-    params: const YoutubePlayerParams(
-      showFullscreenButton: true,
-      mute: false,
-      showVideoAnnotations: false,
-      loop: false,
-      enableCaption: false,
-      captionLanguage: 'tr',
-      enableJavaScript: true,
-      strictRelatedVideos: true,
-    ),
-  );
 
   @override
   Widget build(BuildContext context) {
-    bool test = true;
+    //var task = ref.watch(currentTaskProvider);
+    bool isThereVideo = widget.task.videoLink!.isNotEmpty;
+
+    YoutubePlayerController controller = YoutubePlayerController.fromVideoId(
+      videoId: widget.task.videoLink!,
+      autoPlay: false,
+      params: const YoutubePlayerParams(
+        showFullscreenButton: true,
+        mute: false,
+        showVideoAnnotations: false,
+        loop: false,
+        enableCaption: false,
+        captionLanguage: 'tr',
+        enableJavaScript: true,
+        strictRelatedVideos: true,
+      ),
+    );
+
     return Scaffold(
       body: SafeArea(
         child: YoutubePlayerScaffold(
@@ -46,8 +51,8 @@ class TaskDetailState extends State<TaskDetail> {
               //Dikey
               return Column(
                 children: [
-                  test ? player : const SizedBox(),
-                  const VideoBody(), //kendi içinde expanded var!
+                  isThereVideo ? Expanded(child: player) : const SizedBox(),
+                  const VideoBottom(),
                 ],
               );
             } else {
