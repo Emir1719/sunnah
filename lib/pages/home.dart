@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
             const Percent(),
             Expanded(
               child: ListView.separated(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
                 itemCount: 15,
                 separatorBuilder: (context, index) => const SizedBox(height: 15),
                 itemBuilder: (context, index) {

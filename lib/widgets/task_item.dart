@@ -13,7 +13,7 @@ class TaskItem extends StatelessWidget {
     final style = locator<ProjectStyle>();
 
     return Container(
-      decoration: style.taskContainer,
+      decoration: style.taskContainer(Option.never),
       child: GestureDetector(
         onTap: () => onTab(context),
         child: const ListTile(
