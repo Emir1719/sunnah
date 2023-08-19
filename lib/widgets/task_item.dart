@@ -14,16 +14,17 @@ class TaskItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final style = locator<ProjectStyle>();
+    var task = ref.watch(currentTaskProvider);
 
     return Container(
-      decoration: style.taskContainer(Option.never),
+      decoration: style.taskContainer(task.option),
       child: GestureDetector(
-        onTap: () => onTab(context, ref.read(currentTaskProvider)),
+        onTap: () => onTab(context, task),
         child: ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
           trailing: const MyDropdownButton(),
           title: Text(
-            ref.read(currentTaskProvider).title,
+            task.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
           ),
@@ -36,7 +37,10 @@ class TaskItem extends ConsumerWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => TaskDetail(task: taskModel),
+        builder: (context) => ProviderScope(
+          overrides: [currentTaskProvider.overrideWithValue(taskModel)],
+          child: const TaskDetail(),
+        ),
       ),
     );
   }

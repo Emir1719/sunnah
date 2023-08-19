@@ -21,6 +21,20 @@ final displayAllTaskProvider = StateNotifierProvider<TaskNotifier, List<TaskMode
       videoLink: "3xAFGY_m2AQ",
       option: Option.generally,
     ),
+    TaskModel(
+      id: const Uuid().v4(),
+      title: "Başkalarına Dua Etmek",
+      description: "Bu sünnetin önemi...",
+      videoLink: "tGjErdsVV2s",
+      option: Option.always,
+    ),
+    TaskModel(
+      id: const Uuid().v4(),
+      title: "İnsanları Kötülükten Alıkoymak",
+      description: "Bu sünnetin önemi...",
+      videoLink: "70TSbVmD1PM",
+      option: Option.never,
+    ),
   ]);
 });
 

@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/constants/color.dart';
 import 'package:sunnah/locator.dart';
-import 'package:sunnah/models/task_model.dart';
+import 'package:sunnah/riverpods/global_riverpods.dart';
 import 'package:sunnah/widgets/video_bottom.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 ///Video player'ın bulunduğu alan.
 class TaskDetail extends ConsumerStatefulWidget {
-  const TaskDetail({super.key, required this.task});
-  final TaskModel task;
+  const TaskDetail({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TaskDetailState();
@@ -20,14 +19,14 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
 
   @override
   Widget build(BuildContext context) {
-    //var task = ref.watch(currentTaskProvider);
-    bool isThereVideo = widget.task.videoLink!.isNotEmpty;
+    var task = ref.watch(currentTaskProvider);
+    bool isThereVideo = task.videoLink!.isNotEmpty;
 
     YoutubePlayerController controller = YoutubePlayerController.fromVideoId(
-      videoId: widget.task.videoLink!,
+      videoId: task.videoLink!,
       autoPlay: false,
       params: const YoutubePlayerParams(
-        showFullscreenButton: true,
+        showFullscreenButton: false,
         mute: false,
         showVideoAnnotations: false,
         loop: false,
