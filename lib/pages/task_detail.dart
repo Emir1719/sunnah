@@ -20,10 +20,10 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
   @override
   Widget build(BuildContext context) {
     var task = ref.watch(currentTaskProvider);
-    bool isThereVideo = task.videoLink!.isNotEmpty;
+    bool isThereVideo = task.link!.isNotEmpty;
 
     YoutubePlayerController controller = YoutubePlayerController.fromVideoId(
-      videoId: task.videoLink!,
+      videoId: task.link!,
       autoPlay: false,
       params: const YoutubePlayerParams(
         showFullscreenButton: false,

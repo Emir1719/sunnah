@@ -1,10 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/models/task_model.dart';
+import 'package:sunnah/sevices/task_service.dart';
 import 'package:sunnah/widgets/task_dropdown_button.dart';
 
 class TaskNotifier extends StateNotifier<List<TaskModel>> {
-  TaskNotifier(super.state);
-  //state ifadesi şudur = List<TaskModel>
+  TaskNotifier() : super([]) {
+    //Jsondaki veriyi buraya aktarır.
+    TaskService().getTasksLocal().then((value) => state = value);
+  }
 
   ///Verilen id değerine sahip görevin [option] özelliğini değiştirir.
   ///Diğer özellikler sabit kalır.
@@ -12,7 +15,7 @@ class TaskNotifier extends StateNotifier<List<TaskModel>> {
     state = [
       for (var task in state)
         if (id == task.id)
-          TaskModel(id: id, title: task.title, description: task.description, videoLink: task.videoLink, option: option)
+          TaskModel(id: id, title: task.title, description: task.description, link: task.link, option: option)
         else
           task
     ];

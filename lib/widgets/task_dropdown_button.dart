@@ -21,6 +21,7 @@ class _MyDropdownButtonState extends ConsumerState<MyDropdownButton> {
   @override
   Widget build(BuildContext context) {
     var task = ref.watch(currentTaskProvider);
+    var allTask = ref.watch(displayAllTaskProvider.notifier);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -30,6 +31,7 @@ class _MyDropdownButtonState extends ConsumerState<MyDropdownButton> {
         underline: const SizedBox(),
         onChanged: (Option? newValue) {
           ref.read(displayAllTaskProvider.notifier).edit(task.id, newValue!);
+          ref.read(taskPercentProvider.notifier).chance(allTask.getCompletionPercentage());
         },
         items: Option.values.map((Option option) {
           return DropdownMenuItem<Option>(

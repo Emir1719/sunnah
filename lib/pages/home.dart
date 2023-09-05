@@ -12,7 +12,7 @@ class Home extends ConsumerWidget {
     var taskList = ref.watch(displayAllTaskProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Sünnet Rehberi"), centerTitle: true),
+      appBar: AppBar(title: const Text("Sünnet Rehberi")),
       body: SafeArea(
         child: Column(
           children: [

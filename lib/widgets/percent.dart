@@ -10,9 +10,9 @@ class Percent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    double progressValue = ref.watch(displayAllTaskProvider.notifier).getCompletionPercentage(); // ilerleme değeri
     var color = locator<ProjectColor>();
     var style = locator<ProjectStyle>();
+    double percent = ref.watch(taskPercentProvider);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -21,13 +21,13 @@ class Percent extends ConsumerWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: LinearProgressIndicator(value: progressValue, minHeight: 15, color: color.green),
+              child: LinearProgressIndicator(value: percent / 100, minHeight: 15, color: color.green),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
-              '$progressValue%',
+              '${percent.toStringAsFixed(2)}%',
               style: style.percentValue,
             ),
           ),
