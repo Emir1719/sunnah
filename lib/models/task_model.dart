@@ -32,7 +32,7 @@ class TaskModel {
       title: map['title'],
       description: map['description'],
       link: map['link'] != null ? map['link'] as String : null,
-      option: _optionToString(map["option"]),
+      option: Option.never, //Varsayılan değer olarak never atandı.
     );
   }
 
@@ -43,20 +43,5 @@ class TaskModel {
   @override
   String toString() {
     return title;
-  }
-}
-
-Option _optionToString(String text) {
-  switch (text) {
-    case "always":
-      return Option.always;
-    case "generally":
-      return Option.generally;
-    case "rarely":
-      return Option.rarely;
-    case "never":
-      return Option.never;
-    default:
-      throw ArgumentError("Geçersiz seçenek: $text");
   }
 }

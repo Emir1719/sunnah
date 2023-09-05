@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sunnah/constants/style.dart';
+import 'package:sunnah/locator.dart';
 
 ///Video başlığının altında bulunan özelleştirilmiş butonlar.
 class VideoButton extends StatefulWidget {
@@ -12,18 +14,13 @@ class VideoButton extends StatefulWidget {
 }
 
 class _VideoButtonState extends State<VideoButton> {
+  final style = locator<ProjectStyle>();
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: widget.onPressed,
-      style: ElevatedButton.styleFrom(
-        fixedSize: const Size.fromHeight(35),
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.green,
-        shadowColor: Colors.transparent,
-        side: const BorderSide(width: 1, color: Colors.green),
-        textStyle: const TextStyle(fontSize: 15),
-      ),
+      style: style.videoButton,
       icon: Icon(widget.icon, size: 20),
       label: Text(widget.label),
     );
