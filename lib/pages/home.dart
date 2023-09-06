@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sunnah/constants/style.dart';
+import 'package:sunnah/locator.dart';
 import 'package:sunnah/riverpods/global_riverpods.dart';
 import 'package:sunnah/widgets/percent.dart';
 import 'package:sunnah/widgets/task_item.dart';
@@ -10,9 +12,10 @@ class Home extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var taskList = ref.watch(displayAllTaskProvider);
+    final style = locator<ProjectStyle>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Sünnet Rehberi")),
+      appBar: AppBar(title: Text("Sünnet Rehberi", style: style.appbarTitle)),
       body: SafeArea(
         child: Column(
           children: [

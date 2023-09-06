@@ -22,7 +22,7 @@ class _VideoButtonState extends State<VideoButton> {
       onPressed: widget.onPressed,
       style: style.videoButton,
       icon: Icon(widget.icon, size: 20),
-      label: Text(widget.label),
+      label: Text(widget.label, style: style.videoButtonTitle),
     );
   }
 }

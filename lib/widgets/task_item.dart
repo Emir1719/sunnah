@@ -27,6 +27,7 @@ class TaskItem extends ConsumerWidget {
             task.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
+            style: style.taskTitle,
           ),
         ),
       ),

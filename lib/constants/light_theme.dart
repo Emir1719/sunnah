@@ -8,6 +8,7 @@ class ThemeLight {
 
   ThemeData theme() {
     return ThemeData(
+      fontFamily: "Roboto",
       scaffoldBackgroundColor: _color.white,
       primarySwatch: _color.appGreen,
       appBarTheme: _appBarTheme(),

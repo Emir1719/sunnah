@@ -22,6 +22,7 @@ class _MyDropdownButtonState extends ConsumerState<MyDropdownButton> {
   Widget build(BuildContext context) {
     var task = ref.watch(currentTaskProvider);
     var allTask = ref.watch(displayAllTaskProvider.notifier);
+    final style = locator<ProjectStyle>();
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -36,7 +37,7 @@ class _MyDropdownButtonState extends ConsumerState<MyDropdownButton> {
         items: Option.values.map((Option option) {
           return DropdownMenuItem<Option>(
             value: option,
-            child: Text(optionToString(option)),
+            child: Text(optionToString(option), style: style.dropdownTitle),
           );
         }).toList(),
       ),

@@ -6,10 +6,15 @@ class ProjectStyle {
   TextStyle baseTextStyle = const TextStyle(
     fontSize: 16,
     color: Colors.black,
+    fontFamily: "Roboto",
   );
   late TextStyle percentValue;
   late TextStyle videoTitleText;
   late TextStyle videoDescriptionText;
+  late TextStyle taskTitle;
+  late TextStyle dropdownTitle;
+  late TextStyle appbarTitle;
+  late TextStyle videoButtonTitle;
 
   BoxDecoration baseBoxStyle = BoxDecoration(
     border: Border.all(color: Colors.grey),
@@ -19,12 +24,26 @@ class ProjectStyle {
 
   ProjectStyle() {
     //TextStyles:
-    percentValue = baseTextStyle.copyWith();
-    videoTitleText = baseTextStyle.copyWith(
+    percentValue = baseTextStyle.copyWith(
       fontSize: 18,
+    );
+    videoTitleText = baseTextStyle.copyWith(
+      fontSize: 20,
       fontWeight: FontWeight.w500,
     );
-    videoDescriptionText = baseTextStyle.copyWith(height: 1.5);
+    videoDescriptionText = baseTextStyle.copyWith(
+      fontSize: 18,
+      height: 1.5,
+    );
+    taskTitle = baseTextStyle.copyWith();
+    dropdownTitle = baseTextStyle.copyWith();
+    appbarTitle = baseTextStyle.copyWith(
+      fontSize: 20,
+      color: Colors.white,
+    );
+    videoButtonTitle = baseTextStyle.copyWith(
+      color: ProjectColor().appGreen,
+    );
 
     //BoxDecorations:
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/constants/color.dart';
 import 'package:sunnah/locator.dart';
@@ -41,37 +42,27 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
     return Scaffold(
       body: SafeArea(
         child: YoutubePlayerScaffold(
+          autoFullScreen: false,
           enableFullScreenOnVerticalDrag: false, //aktif olunca ayarlar çalışmıyor!
           controller: controller,
           backgroundColor: color.white,
-          aspectRatio: 16 / 9,
+          fullscreenOrientations: const [], // Boş bir dizi, yatay döndürmeyi devre dışı bırakır.
+          lockedOrientations: const [DeviceOrientation.portraitUp], // Sadece dikey yönü kilitle
           builder: (context, player) {
-            Orientation orientation = MediaQuery.of(context).orientation;
-            if (orientation == Orientation.portrait) {
-              //Dikey
-              return isThereVideo
-                  ? Column(
-                      children: [
-                        Expanded(child: player),
-                        ProviderScope(
-                          overrides: [currentTaskProvider.overrideWithValue(task)],
-                          child: const VideoBottom(),
-                        ),
-                      ],
-                    )
-                  : ProviderScope(
-                      overrides: [currentTaskProvider.overrideWithValue(task)],
-                      child: const TaskDetailWithoutVideo(),
-                    );
-            } else {
-              //Yatay
-              return isThereVideo
-                  ? player
-                  : ProviderScope(
-                      overrides: [currentTaskProvider.overrideWithValue(task)],
-                      child: const TaskDetailWithoutVideo(),
-                    );
-            }
+            return isThereVideo
+                ? Column(
+                    children: [
+                      Expanded(child: player),
+                      ProviderScope(
+                        overrides: [currentTaskProvider.overrideWithValue(task)],
+                        child: const VideoBottom(),
+                      ),
+                    ],
+                  )
+                : ProviderScope(
+                    overrides: [currentTaskProvider.overrideWithValue(task)],
+                    child: const TaskDetailWithoutVideo(),
+                  );
           },
         ),
       ),
