@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sunnah/constants/color.dart';
 import 'package:sunnah/locator.dart';
+import 'package:sunnah/pages/task_detail_without_video.dart';
 import 'package:sunnah/riverpods/global_riverpods.dart';
 import 'package:sunnah/widgets/video_bottom.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -48,15 +49,28 @@ class _TaskDetailState extends ConsumerState<TaskDetail> {
             Orientation orientation = MediaQuery.of(context).orientation;
             if (orientation == Orientation.portrait) {
               //Dikey
-              return Column(
-                children: [
-                  isThereVideo ? Expanded(child: player) : const SizedBox(),
-                  const VideoBottom(),
-                ],
-              );
+              return isThereVideo
+                  ? Column(
+                      children: [
+                        Expanded(child: player),
+                        ProviderScope(
+                          overrides: [currentTaskProvider.overrideWithValue(task)],
+                          child: const VideoBottom(),
+                        ),
+                      ],
+                    )
+                  : ProviderScope(
+                      overrides: [currentTaskProvider.overrideWithValue(task)],
+                      child: const TaskDetailWithoutVideo(),
+                    );
             } else {
               //Yatay
-              return player;
+              return isThereVideo
+                  ? player
+                  : ProviderScope(
+                      overrides: [currentTaskProvider.overrideWithValue(task)],
+                      child: const TaskDetailWithoutVideo(),
+                    );
             }
           },
         ),

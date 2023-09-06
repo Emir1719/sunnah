@@ -9,7 +9,7 @@ class ThemeLight {
   ThemeData theme() {
     return ThemeData(
       scaffoldBackgroundColor: _color.white,
-      primarySwatch: _color.green,
+      primarySwatch: _color.appGreen,
       appBarTheme: _appBarTheme(),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunnah/constants/color.dart';
 import 'package:sunnah/widgets/task_dropdown_button.dart';
 
 class ProjectStyle {
@@ -70,9 +71,9 @@ class ProjectStyle {
   ButtonStyle videoButton = ElevatedButton.styleFrom(
     fixedSize: const Size.fromHeight(35),
     backgroundColor: Colors.transparent,
-    foregroundColor: Colors.green,
+    foregroundColor: ProjectColor().mettalicGreen,
     shadowColor: Colors.transparent,
-    side: const BorderSide(width: 1, color: Colors.green),
+    side: BorderSide(width: 1, color: ProjectColor().mettalicGreen),
     textStyle: const TextStyle(fontSize: 15),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),

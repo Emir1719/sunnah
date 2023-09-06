@@ -21,7 +21,12 @@ class Percent extends ConsumerWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: LinearProgressIndicator(value: percent / 100, minHeight: 15, color: color.green),
+              child: LinearProgressIndicator(
+                value: percent / 100,
+                minHeight: 15,
+                color: color.green,
+                backgroundColor: color.green.shade200,
+              ),
             ),
           ),
           Padding(
